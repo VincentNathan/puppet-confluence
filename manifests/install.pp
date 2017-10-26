@@ -50,6 +50,8 @@ class confluence::install {
       staging::file { $file:
         source  => "${confluence::download_url}/${file}",
         timeout => 1800,
+        owner   => $confluence::user,
+        group   => $confluence::group,
       }
       -> staging::extract { $file:
         target  => $confluence::webappdir,
